@@ -19,13 +19,7 @@ def call(body){
       }
      agent any
      stages {
-      stage('Cloning Git') {
-       steps {
-           git credentialsId: "${credid}", url: "${projecturl}" 
-
-       }
-     }
-     stage('Building image') {
+          stage('Building image') {
       steps{
         script {
           sh "docker build -t image ."
