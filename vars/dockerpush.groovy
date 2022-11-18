@@ -28,18 +28,14 @@ def call(body){
      stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build imagename
+          sh "docker build -t image ."
         }
       }
      }
      stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-
-           }
+        sh "docker images ls"
          }
        }
      }
